@@ -26,7 +26,7 @@ public class WaterLogs : MonoBehaviour {
 		for(int i=0; i<size; i++)
         {
             Vector3 wavePos = waves[i].transform.position;
-            wavePos.y = transform.position.y + waveNumbers.getOffset(i);
+            wavePos.y = transform.position.y + waveNumbers.GetOffset(i);
             waves[i].transform.position = wavePos;
         }
 	}
