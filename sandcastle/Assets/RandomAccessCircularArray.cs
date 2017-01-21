@@ -39,10 +39,10 @@ public class RandomAccessCircularArray<T> {
         internalArray[index] = newValue;
     }
 
-    // moves every entry one index to the right,
+    // moves every entry one index to the left,
     // sets the last entry of the array to defaultEntry
     // and returns the previous value of the last entry
-    public T RotateRight()
+    public T RotateLeft()
     {
         T oldEntry = Get(length - 1);
         startIndex = (startIndex + 1) % length;
@@ -50,10 +50,10 @@ public class RandomAccessCircularArray<T> {
         return oldEntry;
     }
 
-    // moves every entry one index to the left,
+    // moves every entry one index to the right,
     // sets the last entry of the array to defaultEntry
     // and returns the previous value of the last entry
-    public T RotateLeft()
+    public T RotateRight()
     {
         T oldEntry = Get(0);
         // + length to keep it positive

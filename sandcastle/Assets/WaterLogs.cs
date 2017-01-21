@@ -6,11 +6,16 @@ public class WaterLogs : MonoBehaviour {
     public int size = 50;
     public Transform waveObject;
     public float waveSpacing;
+    public KeyCode wavingKey;
+    public int numOfFixedUpdatesPerWaveUpdate;
+    private int currFixedUpdateCount;
     private Waveable waveNumbers;
     private Transform[] waves;
+    public float[] singleWave;  // form of a single wave, as positive or negative offsets from the transform.position.y
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
+        currFixedUpdateCount = 0;
         waveNumbers = new Waveable(size);
         waves = new Transform[size];
         for(int i=0; i < size; i++)
@@ -20,14 +25,22 @@ public class WaterLogs : MonoBehaviour {
         }
 	}
 	
-	// Update is called once per frame
-	void Update () {
-        waveNumbers.Update();
-		for(int i=0; i<size; i++)
+	void FixedUpdate () {
+        if(Input.GetKeyDown(wavingKey))
         {
-            Vector3 wavePos = waves[i].transform.position;
-            wavePos.y = transform.position.y + waveNumbers.GetOffset(i);
-            waves[i].transform.position = wavePos;
+            waveNumbers.AddWave(singleWave);
+        }
+        currFixedUpdateCount++;
+        if (currFixedUpdateCount >= numOfFixedUpdatesPerWaveUpdate)
+        {
+            waveNumbers.Update();
+            for (int i = 0; i < size; i++)
+            {
+                Vector3 wavePos = waves[i].transform.position;
+                wavePos.y = transform.position.y + waveNumbers.GetOffset(i);
+                waves[i].transform.position = wavePos;
+            }
+            currFixedUpdateCount = 0;
         }
 	}
 }

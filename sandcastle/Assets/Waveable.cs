@@ -5,7 +5,6 @@ using UnityEngine;
 public class Waveable {
 
     public int size;
-    public float[] wave;
     private Queue<float> currWave;
     private RandomAccessCircularArray<float> heightOffsetsTravelingRight; // Delta height from defaultHeight that should moving right
     private RandomAccessCircularArray<float> heightOffsetsTravelingLeft;  // Delta height from defaultHeight that is moving left
@@ -15,13 +14,16 @@ public class Waveable {
         this.size = size;
         heightOffsetsTravelingRight = new RandomAccessCircularArray<float>(size, 0);
         heightOffsetsTravelingLeft = new RandomAccessCircularArray<float>(size, 0);
+        currWave = new Queue<float>();
     }
-	
-	// Update should be called once per frame manually
-	public void Update () {
-        float f = currWave.Dequeue();
+
+    // Update should be called once per frame manually
+    public void Update() {
         heightOffsetsTravelingRight.RotateRight();
-        heightOffsetsTravelingRight.Set(0, f);
+        if (currWave.Count > 0) {
+          float f = currWave.Dequeue();
+          heightOffsetsTravelingRight.Set(0, f);
+        }
 	}
 
     public float GetOffset(int index)
@@ -29,7 +31,7 @@ public class Waveable {
         return heightOffsetsTravelingLeft.Get(index) + heightOffsetsTravelingRight.Get(index);
     }
 
-    public void AddWave()
+    public void AddWave(float[] wave)
     {
         if (currWave.Count > 0)
         {
