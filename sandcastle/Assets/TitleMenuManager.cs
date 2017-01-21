@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class BottomUIManager : MonoBehaviour {
+public class TitleMenuManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -15,8 +15,8 @@ public class BottomUIManager : MonoBehaviour {
 		
 	}
 
-	public void OnRestartClicked()
+	public void OnPlayClicked()
 	{
-		SceneManager.LoadScene("title");
+		SceneManager.LoadScene("Gameplay");
 	}
 }
