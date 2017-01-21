@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\BottomUIManager.cs" />
      <Compile Include="Assets\RandomAccessCircularArray.cs" />
+     <Compile Include="Assets\TitleMenuManager.cs" />
      <Compile Include="Assets\WaterLogs.cs" />
      <Compile Include="Assets\Waveable.cs" />
  <Reference Include="UnityEngine.UI">
