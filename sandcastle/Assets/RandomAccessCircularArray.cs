@@ -42,11 +42,23 @@ public class RandomAccessCircularArray<T> {
     // moves every entry one index to the right,
     // sets the last entry of the array to defaultEntry
     // and returns the previous value of the last entry
-    T rotateRight()
+    public T RotateRight()
     {
         T oldEntry = Get(length - 1);
         startIndex = (startIndex + 1) % length;
         Set(length - 1, defaultEntry);
+        return oldEntry;
+    }
+
+    // moves every entry one index to the left,
+    // sets the last entry of the array to defaultEntry
+    // and returns the previous value of the last entry
+    public T RotateLeft()
+    {
+        T oldEntry = Get(0);
+        // + length to keep it positive
+        startIndex = (startIndex - 1 + length) % length;
+        Set(0, defaultEntry);
         return oldEntry;
     }
 }
