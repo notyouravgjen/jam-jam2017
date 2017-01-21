@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WaterLogs : MonoBehaviour {
     public int size = 50;
+    public float momentumLossPerUpdate;
     public Transform waveObject;
     public float waveSpacing;
     public KeyCode wavingKey;
@@ -16,7 +17,7 @@ public class WaterLogs : MonoBehaviour {
     // Use this for initialization
     void Start () {
         currFixedUpdateCount = 0;
-        waveNumbers = new Waveable(size);
+        waveNumbers = new Waveable(size, momentumLossPerUpdate);
         waves = new Transform[size];
         for(int i=0; i < size; i++)
         {
