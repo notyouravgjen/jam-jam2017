@@ -44,7 +44,7 @@ public class RandomAccessCircularArray<T> {
     // and returns the previous value of the last entry
     public T RotateLeft()
     {
-        T oldEntry = Get(length - 1);
+        T oldEntry = Get(0);
         startIndex = (startIndex + 1) % length;
         Set(length - 1, defaultEntry);
         return oldEntry;
@@ -55,7 +55,7 @@ public class RandomAccessCircularArray<T> {
     // and returns the previous value of the last entry
     public T RotateRight()
     {
-        T oldEntry = Get(0);
+        T oldEntry = Get(length-1);
         // + length to keep it positive
         startIndex = (startIndex - 1 + length) % length;
         Set(0, defaultEntry);

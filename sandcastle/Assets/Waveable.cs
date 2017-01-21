@@ -5,6 +5,7 @@ using UnityEngine;
 public class Waveable {
 
     public int size;
+    public float momentumLossOnBounce;
     private Queue<float> currWave;
     private RandomAccessCircularArray<float> heightOffsetsTravelingRight; // Delta height from defaultHeight that should moving right
     private RandomAccessCircularArray<float> heightOffsetsTravelingLeft;  // Delta height from defaultHeight that is moving left
@@ -17,14 +18,19 @@ public class Waveable {
         currWave = new Queue<float>();
     }
 
-    // Update should be called once per frame manually
+    // Update should be called manually
+    // Does not work for edge cases (sizes of 0, 1, maybe a few more where the two waving sides overlap)
     public void Update() {
-        heightOffsetsTravelingRight.RotateRight();
+        float bouncedRightWaveHeight = heightOffsetsTravelingRight.RotateRight();
+        float bouncedLeftWaveHeight = heightOffsetsTravelingLeft.RotateLeft();
+        heightOffsetsTravelingLeft.Set(size - 1, bouncedRightWaveHeight);
+        float f = 0;
         if (currWave.Count > 0) {
-          float f = currWave.Dequeue();
-          heightOffsetsTravelingRight.Set(0, f);
+          f = currWave.Dequeue();
         }
-	}
+        heightOffsetsTravelingRight.Set(0, f + bouncedLeftWaveHeight);
+
+    }
 
     public float GetOffset(int index)
     {
