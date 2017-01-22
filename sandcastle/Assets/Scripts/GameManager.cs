@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject[] destructiblePrefabs;
 	public AudioSource[] countingSounds;
+	public AudioSource splashSound;
 	public GameObject spawnPoint;
 	public AudioClip themeSong;
 
@@ -25,7 +26,8 @@ public class GameManager : MonoBehaviour {
 			instance = this;
 		}
 
-		StartRound();
+		//StartRound();
+		Invoke("StartRound", 2.0f);
 	}
 	
 	public void Update()
@@ -42,6 +44,9 @@ public class GameManager : MonoBehaviour {
 		}
 
 		waterLogManager.Reset();
+
+		// splash at the end of a level
+		splashSound.Play();
 	}
 
 	private void StartRound()
