@@ -36,7 +36,7 @@ public class TextBubble : MonoBehaviour {
             displayedBubble.transform.localScale = new Vector3(width, 1, height);
             GameObject textMeshObject = new GameObject("TextMeshObject");
             TextMesh textMesh = textMeshObject.AddComponent<TextMesh>();
-            textMesh.text = text;
+            WrapText(textMesh, text);
             textMeshObject.transform.SetParent(displayedBubble.transform, false);
             textMesh.transform.rotation = Quaternion.Euler(textXRotate, textYRotate, textZRotate);
             textMesh.alignment = TextAlignment.Center;
@@ -46,4 +46,20 @@ public class TextBubble : MonoBehaviour {
             Destroy(displayedBubble, timeDisplayedInSec);
         }
     }
+    void WrapText(TextMesh textMesh, string text) {
+      string builder = "";
+      textMesh.text = "";
+      float rowLimit = width * 10f; //find the sweet spot
+      string[] parts = text.Split(' ');
+        for (int i = 0; i < parts.Length; i++)
+        {
+            Debug.Log(parts[i]);
+            textMesh.text += parts[i] + " ";
+            if (textMesh.GetComponent<Renderer>().bounds.extents.x > rowLimit)
+            {
+                textMesh.text = builder.TrimEnd() + System.Environment.NewLine + parts[i] + " ";
+            }
+            builder = textMesh.text;
+        }
+     }
 }
