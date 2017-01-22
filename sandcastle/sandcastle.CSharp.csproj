@@ -75,6 +75,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\FadeableMusic.cs" />
+    <Compile Include="Assets\FatherController.cs" />
     <Compile Include="Assets\HandController.cs" />
     <Compile Include="Assets\LevelProgressor.cs" />
     <Compile Include="Assets\Scripts\ActivatedTextBubbles.cs" />
