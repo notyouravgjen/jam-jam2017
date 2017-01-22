@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour {
 	public AudioSource[] countingSounds;
 	public AudioSource splashSound;
 	public GameObject spawnPoint;
-	public AudioClip themeSong;
 
 	public WaterLogs waterLogManager;
 
