@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
 	public AudioSource[] countingSounds;
 	public AudioSource splashSound;
 	public GameObject spawnPoint;
+	public TextMesh levelLabel;
 
 	public FadeableMusic mainMusic;
 
@@ -29,6 +30,9 @@ public class GameManager : MonoBehaviour {
 		}
 
 		this.interactionDisabled = true;
+
+		levelLabel.text = "Level " + (currentRoundIndex+1);
+		Invoke("ShowLevelLabel", 1.0f);
 
 		//StartRound();
 		Invoke("StartRound", 2.0f);
@@ -76,6 +80,8 @@ public class GameManager : MonoBehaviour {
 		mainMusic.SetFadeTarget(1.0f);
 
 		this.interactionDisabled = false;
+
+		Invoke("HideLevelLabel", 4.0f);
 	}
 
 	public void ProgressRound()
@@ -86,14 +92,31 @@ public class GameManager : MonoBehaviour {
 
 		if (this.currentRoundIndex < this.destructiblePrefabs.Length)
 		{
+			levelLabel.text = "Level " + (currentRoundIndex+1);
+			Invoke("ShowLevelLabel", 2.0f);
+
 			Invoke("StartRound", 3.0f);
-			//StartRound();
 		}
 		else
 		{
-			// End of game logic: dad shows up!
-			mainMusic.SetFadeTarget(0.25f);
-			fatherObject.SetActive(true);
+			Invoke("EndGame", 2.0f);
 		}
+	}
+
+	public void ShowLevelLabel()
+	{
+		levelLabel.gameObject.SetActive(true);
+	}
+
+	public void HideLevelLabel()
+	{
+		levelLabel.gameObject.SetActive(false);
+	}
+
+	private void EndGame()
+	{
+		// End of game logic: dad shows up!
+		mainMusic.SetFadeTarget(0.25f);
+		fatherObject.SetActive(true);
 	}
 }
