@@ -31,9 +31,11 @@ public class WaterLogs : MonoBehaviour {
         {
             waveNumbers.AddWave(singleWave);
         }
+
         currFixedUpdateCount++;
         if (currFixedUpdateCount >= numOfFixedUpdatesPerWaveUpdate)
         {
+            EventManager.BroadcastDamageThings(waveNumbers.GetOffset(size-1));
             waveNumbers.Update();
             for (int i = 0; i < size; i++)
             {

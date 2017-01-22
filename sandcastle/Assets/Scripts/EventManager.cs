@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EventManager : MonoBehaviour {
-    //public delegate DamageThing();
-    //public static event DamageThing DamageEvent;
+    public delegate void DamageThings(float damage);
+    public static event DamageThings DamageEvent;
 	// Use this for initialization
 	void Start () {
 		
@@ -14,4 +14,12 @@ public class EventManager : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public static void BroadcastDamageThings(float damage)
+    {
+        if (DamageEvent != null)
+        {
+            DamageEvent(damage);
+        }
+    }
 }
