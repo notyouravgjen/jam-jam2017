@@ -5,11 +5,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
 	public GameObject[] destructiblePrefabs;
-
 	public GameObject spawnPoint;
+	public AudioClip themeSong;
 
 	private int currentRoundIndex;
-
 	private GameObject currentRoundDestructible;
 
 	public void Start()
