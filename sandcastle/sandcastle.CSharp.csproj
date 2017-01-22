@@ -75,11 +75,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\BottomUIManager.cs" />
-    <Compile Include="Assets\RandomAccessCircularArray.cs" />
-    <Compile Include="Assets\TitleMenuManager.cs" />
-    <Compile Include="Assets\WaterLogs.cs" />
-    <Compile Include="Assets\Waveable.cs" />
+    <Compile Include="Assets\Scripts\BottomUIManager.cs" />
+    <Compile Include="Assets\Scripts\EventManager.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\RandomAccessCircularArray.cs" />
+    <Compile Include="Assets\Scripts\TitleMenuManager.cs" />
+    <Compile Include="Assets\Scripts\WaterLogs.cs" />
+    <Compile Include="Assets\Scripts\Waveable.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
