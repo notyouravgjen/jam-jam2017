@@ -22,13 +22,16 @@ public class GameManager : MonoBehaviour {
 
 	public static GameManager instance { get; private set; }
 
-	public void Start()
+	private void Awake()
 	{
 		if (instance == null)
 		{
 			instance = this;
 		}
+	}
 
+	private void Start()
+	{
 		this.interactionDisabled = true;
 
 		// SHOW SCRIPTED EVENTS...

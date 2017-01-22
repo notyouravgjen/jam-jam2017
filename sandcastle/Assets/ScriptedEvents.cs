@@ -11,7 +11,7 @@ public class ScriptedEvents : MonoBehaviour {
 	private int index;
 
 	// Use this for initialization
-	void Start ()
+	void Awake ()
 	{
 		if (instance == null)
 		{
