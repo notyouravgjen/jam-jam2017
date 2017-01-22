@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\HandController.cs" />
+    <Compile Include="Assets\LevelProgressor.cs" />
     <Compile Include="Assets\Scripts\ActivatedTextBubbles.cs" />
     <Compile Include="Assets\Scripts\BottomUIManager.cs" />
     <Compile Include="Assets\Scripts\Damageable.cs" />
