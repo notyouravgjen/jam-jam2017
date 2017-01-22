@@ -76,11 +76,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\HandController.cs" />
+    <Compile Include="Assets\Scripts\ActivatedTextBubbles.cs" />
     <Compile Include="Assets\Scripts\BottomUIManager.cs" />
     <Compile Include="Assets\Scripts\Damageable.cs" />
     <Compile Include="Assets\Scripts\EventManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\RandomAccessCircularArray.cs" />
+    <Compile Include="Assets\Scripts\TextBubble.cs" />
     <Compile Include="Assets\Scripts\TieredAnimation.cs" />
     <Compile Include="Assets\Scripts\TitleMenuManager.cs" />
     <Compile Include="Assets\Scripts\WaterLogs.cs" />

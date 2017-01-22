@@ -9,7 +9,7 @@ public class Damageable : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        EventManager.DamageEvent += TakeDamage;
+        EventManager.DamageThingsEvent += TakeDamage;
         myTieredAnimation = gameObject.GetComponentInChildren<TieredAnimation>();
     }
 	
@@ -24,13 +24,14 @@ public class Damageable : MonoBehaviour {
             if (!wasRecentlyHit)
             {
                 bool destroyed = myTieredAnimation.AdvanceStage();
-                if(destroyed)
+                EventManager.BroadcastTookDamage(destroyed);
+                if (destroyed)
                 {
                     TriggerDestruction();
                 }
+                wasRecentlyHit = true;
+                Debug.Log("damage: " + damage + " exceeded threshold, Health was hit");
             }
-            wasRecentlyHit = true;
-            Debug.Log("damage: " + damage + " exceeded threshold, Health was hit");
         }
         else
         {
@@ -45,7 +46,7 @@ public class Damageable : MonoBehaviour {
 
     void OnDestroy()
     {
-        EventManager.DamageEvent -= TakeDamage;
+        EventManager.DamageThingsEvent -= TakeDamage;
         Debug.Log("Cleaned up my DamageEvent");
     }
 }

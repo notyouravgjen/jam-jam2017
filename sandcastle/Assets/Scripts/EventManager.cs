@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour {
     public delegate void DamageThings(float damage);
-    public static event DamageThings DamageEvent;
+    public static event DamageThings DamageThingsEvent;
+    public delegate void TookDamage(bool wasDestroyed);
+    public static event TookDamage TookDamageEvent;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -17,9 +20,17 @@ public class EventManager : MonoBehaviour {
 
     public static void BroadcastDamageThings(float damage)
     {
-        if (DamageEvent != null)
+        if (DamageThingsEvent != null)
         {
-            DamageEvent(damage);
+            DamageThingsEvent(damage);
+        }
+    }
+
+    public static void BroadcastTookDamage(bool wasDestroyed)
+    {
+        if (TookDamageEvent != null)
+        {
+            TookDamageEvent(wasDestroyed);
         }
     }
 }
