@@ -6,8 +6,8 @@ public class TextBubble : MonoBehaviour {
 
     public Texture backgroundBubble;
     public string text;
-    public GUIStyle textStyle;
-    public Rect positionAndSize;
+    private GUIStyle textStyle;
+    private Rect positionAndSize;
     public ActivatedTextBubbles.Trigger triggersOn; 
 
     // Use this for initialization
