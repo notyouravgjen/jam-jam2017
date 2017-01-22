@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ActivatedTextBubbles : MonoBehaviour {
     public enum Trigger { OnDamage, OnDestruction }
-    private float textDisplayTimeInSecs = 2;
-    public int currText;
+    public int currText = -1;
 
     private TextBubble[] allPossibleTexts;
     private Dictionary<Trigger, List<int>> triggerTextMap;
@@ -16,7 +15,6 @@ public class ActivatedTextBubbles : MonoBehaviour {
 
         allPossibleTexts = gameObject.GetComponents<TextBubble>();
         triggerTextMap = GenerateTriggerTextMap(allPossibleTexts);
-        currText = -1;
     }
 
     Dictionary<Trigger, List<int>> GenerateTriggerTextMap(TextBubble[] allPossibleTexts)
