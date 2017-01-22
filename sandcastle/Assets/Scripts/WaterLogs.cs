@@ -27,7 +27,7 @@ public class WaterLogs : MonoBehaviour {
 	}
 	
 	void FixedUpdate () {
-        if(Input.GetKeyDown(wavingKey))
+		if(Input.GetKeyDown(wavingKey) && !GameManager.instance.interactionDisabled)
         {
             waveNumbers.AddWave(singleWave);
         }
@@ -45,5 +45,10 @@ public class WaterLogs : MonoBehaviour {
             }
             currFixedUpdateCount = 0;
         }
+	}
+
+	public void Reset()
+	{
+		this.waveNumbers = new Waveable(size, momentumLossPerUpdate);
 	}
 }

@@ -9,21 +9,39 @@ public class GameManager : MonoBehaviour {
 	public GameObject spawnPoint;
 	public AudioClip themeSong;
 
+	public WaterLogs waterLogManager;
+
 	private int currentRoundIndex;
 	private GameObject currentRoundDestructible;
 
+	public bool interactionDisabled;
+
+	public static GameManager instance { get; private set; }
+
 	public void Start()
 	{
+		if (instance == null)
+		{
+			instance = this;
+		}
+
 		StartRound();
 	}
 	
 	public void Update()
 	{
-		// TEST ROUND PROGRESSION
-		if (Input.GetKeyDown(KeyCode.A))
+	}
+
+	private void EndRound()
+	{
+		this.interactionDisabled = true;
+
+		if (this.currentRoundDestructible != null)
 		{
-			ProgressRound();
+			Destroy(this.currentRoundDestructible);
 		}
+
+		waterLogManager.Reset();
 	}
 
 	private void StartRound()
@@ -32,11 +50,6 @@ public class GameManager : MonoBehaviour {
 
 		Vector3 pos = spawnPoint.transform.position;
 		Quaternion rot = Quaternion.Euler(0, 0, 0);
-
-		if (this.currentRoundDestructible != null)
-		{
-			Destroy(this.currentRoundDestructible);
-		}
 
 		this.currentRoundDestructible = (GameObject)Instantiate(prefab, pos, rot, transform.parent);
 
@@ -48,15 +61,24 @@ public class GameManager : MonoBehaviour {
 				this.countingSounds[currentRoundIndex].Play();
 			}
 		}
+
+		this.interactionDisabled = false;
 	}
 
-	private void ProgressRound()
+	public void ProgressRound()
 	{
 		this.currentRoundIndex++;
 
+		EndRound();
+
 		if (this.currentRoundIndex < this.destructiblePrefabs.Length)
 		{
-			StartRound();
+			Invoke("StartRound", 3.0f);
+			//StartRound();
+		}
+		else
+		{
+			// TODO: end of game logic here!
 		}
 	}
 }
