@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -127,7 +128,8 @@ public class GameManager : MonoBehaviour {
 		}
 		else
 		{
-			Invoke("EndGame", 2.0f);
+			mainMusic.SetFadeTarget(0.0f);
+			Invoke("EndGame", 5.0f);
 		}
 	}
 
@@ -144,8 +146,9 @@ public class GameManager : MonoBehaviour {
 	private void EndGame()
 	{
 		// End of game logic: dad shows up! - no, nevermind
-		mainMusic.SetFadeTarget(0.25f);
 		//fatherObject.SetActive(true);
+
+		SceneManager.LoadScene("title");
 	}
 
 	private void ShowNextScript()
