@@ -5,9 +5,12 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
 	public GameObject[] destructiblePrefabs;
+	public GameObject fatherObject;
 	public AudioSource[] countingSounds;
 	public AudioSource splashSound;
 	public GameObject spawnPoint;
+
+	public FadeableMusic mainMusic;
 
 	public WaterLogs waterLogManager;
 
@@ -24,6 +27,8 @@ public class GameManager : MonoBehaviour {
 		{
 			instance = this;
 		}
+
+		this.interactionDisabled = true;
 
 		//StartRound();
 		Invoke("StartRound", 2.0f);
@@ -43,6 +48,8 @@ public class GameManager : MonoBehaviour {
 		}
 
 		waterLogManager.Reset();
+
+		mainMusic.SetFadeTarget(0.25f);
 
 		// splash at the end of a level
 		splashSound.Play();
@@ -66,6 +73,8 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 
+		mainMusic.SetFadeTarget(1.0f);
+
 		this.interactionDisabled = false;
 	}
 
@@ -82,7 +91,9 @@ public class GameManager : MonoBehaviour {
 		}
 		else
 		{
-			// TODO: end of game logic here!
+			// End of game logic: dad shows up!
+			mainMusic.SetFadeTarget(0.25f);
+			fatherObject.SetActive(true);
 		}
 	}
 }
