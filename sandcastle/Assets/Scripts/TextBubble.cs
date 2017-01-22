@@ -39,6 +39,8 @@ public class TextBubble : MonoBehaviour {
             textMesh.text = text;
             textMeshObject.transform.SetParent(displayedBubble.transform, false);
             textMesh.transform.rotation = Quaternion.Euler(textXRotate, textYRotate, textZRotate);
+            textMesh.alignment = TextAlignment.Center;
+            textMesh.anchor = TextAnchor.MiddleCenter;
             textMesh.offsetZ = textOffset;
             textMesh.color = Color.black;
             Destroy(displayedBubble, timeDisplayedInSec);
