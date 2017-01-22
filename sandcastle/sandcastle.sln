@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sandcastle.CSharp", "sandcastle.CSharp.csproj", "{0529FE16-6918-5B48-5563-E9662E04367D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sandcastle", "sandcastle.csproj", "{A0340C8E-BCDE-B771-3D09-DAA76B2E0D4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0529FE16-6918-5B48-5563-E9662E04367D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0529FE16-6918-5B48-5563-E9662E04367D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0529FE16-6918-5B48-5563-E9662E04367D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0529FE16-6918-5B48-5563-E9662E04367D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0340C8E-BCDE-B771-3D09-DAA76B2E0D4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0340C8E-BCDE-B771-3D09-DAA76B2E0D4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0340C8E-BCDE-B771-3D09-DAA76B2E0D4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0340C8E-BCDE-B771-3D09-DAA76B2E0D4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
