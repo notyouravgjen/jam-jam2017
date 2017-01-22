@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class TitleMenuManager : MonoBehaviour {
+public class LevelProgressor : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -15,8 +14,8 @@ public class TitleMenuManager : MonoBehaviour {
 		
 	}
 
-	public void OnPlayClicked()
+	public void ProgressToNextLevel()
 	{
-		SceneManager.LoadScene("Waves");
+		GameManager.instance.ProgressRound();
 	}
 }

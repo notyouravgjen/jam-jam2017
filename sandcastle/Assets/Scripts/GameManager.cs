@@ -5,25 +5,48 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
 	public GameObject[] destructiblePrefabs;
-
+	public AudioSource[] countingSounds;
+	public AudioSource splashSound;
 	public GameObject spawnPoint;
+	public AudioClip themeSong;
+
+	public WaterLogs waterLogManager;
 
 	private int currentRoundIndex;
-
 	private GameObject currentRoundDestructible;
+
+	public bool interactionDisabled;
+
+	public static GameManager instance { get; private set; }
 
 	public void Start()
 	{
-		StartRound();
+		if (instance == null)
+		{
+			instance = this;
+		}
+
+		//StartRound();
+		Invoke("StartRound", 2.0f);
 	}
 	
 	public void Update()
 	{
-		// TEST ROUND PROGRESSION
-		if (Input.GetKeyDown(KeyCode.A))
+	}
+
+	private void EndRound()
+	{
+		this.interactionDisabled = true;
+
+		if (this.currentRoundDestructible != null)
 		{
-			ProgressRound();
+			Destroy(this.currentRoundDestructible);
 		}
+
+		waterLogManager.Reset();
+
+		// splash at the end of a level
+		splashSound.Play();
 	}
 
 	private void StartRound()
@@ -33,21 +56,34 @@ public class GameManager : MonoBehaviour {
 		Vector3 pos = spawnPoint.transform.position;
 		Quaternion rot = Quaternion.Euler(0, 0, 0);
 
-		if (this.currentRoundDestructible != null)
+		this.currentRoundDestructible = (GameObject)Instantiate(prefab, pos, rot, transform.parent);
+
+		// play associated audio?
+		if (this.countingSounds != null)
 		{
-			Destroy(this.currentRoundDestructible);
+			if (this.currentRoundIndex < this.countingSounds.Length)
+			{
+				this.countingSounds[currentRoundIndex].Play();
+			}
 		}
 
-		this.currentRoundDestructible = (GameObject)Instantiate(prefab, pos, rot, transform.parent);
+		this.interactionDisabled = false;
 	}
 
-	private void ProgressRound()
+	public void ProgressRound()
 	{
 		this.currentRoundIndex++;
 
+		EndRound();
+
 		if (this.currentRoundIndex < this.destructiblePrefabs.Length)
 		{
-			StartRound();
+			Invoke("StartRound", 3.0f);
+			//StartRound();
+		}
+		else
+		{
+			// TODO: end of game logic here!
 		}
 	}
 }

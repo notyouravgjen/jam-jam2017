@@ -17,13 +17,16 @@ public class HandController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Input.GetKeyDown(handKey))
+		if (!GameManager.instance.interactionDisabled)
 		{
-			transform.Rotate(rotationAngle, 0, 0);
-		}
-		else if (Input.GetKeyUp(handKey))
-		{
-			transform.Rotate(rotationAngle * -1, 0, 0);
+			if (Input.GetKeyDown(handKey))
+			{
+				transform.Rotate(rotationAngle, 0, 0);
+			}
+			else if (Input.GetKeyUp(handKey))
+			{
+				transform.Rotate(rotationAngle * -1, 0, 0);
+			}
 		}
 	}
 }
