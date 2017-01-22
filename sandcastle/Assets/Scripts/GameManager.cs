@@ -31,15 +31,25 @@ public class GameManager : MonoBehaviour {
 
 		this.interactionDisabled = true;
 
+		// SHOW SCRIPTED EVENTS...
+
+		// Dad
+		ScriptedEvents.instance.ShowNextScript();
+
+		// DESTROY THE BALL
+		Invoke("ShowNextScript", 5.0f);
+
+		// Press space
+		Invoke("ShowNextScript", 10.0f);
+
+		// hide scripted events and proceed
+		Invoke("HideScriptedEvent", 15.0f);
+
 		levelLabel.text = "Level " + (currentRoundIndex+1);
-		Invoke("ShowLevelLabel", 1.0f);
+		Invoke("ShowLevelLabel", 15.0f);
 
 		//StartRound();
-		Invoke("StartRound", 2.0f);
-	}
-	
-	public void Update()
-	{
+		Invoke("StartRound", 17.0f);
 	}
 
 	private void EndRound()
@@ -84,6 +94,14 @@ public class GameManager : MonoBehaviour {
 		Invoke("HideLevelLabel", 4.0f);
 	}
 
+	void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.A))
+		{
+			ProgressRound();
+		}
+	}
+
 	public void ProgressRound()
 	{
 		this.currentRoundIndex++;
@@ -118,5 +136,15 @@ public class GameManager : MonoBehaviour {
 		// End of game logic: dad shows up!
 		mainMusic.SetFadeTarget(0.25f);
 		fatherObject.SetActive(true);
+	}
+
+	private void ShowNextScript()
+	{
+		ScriptedEvents.instance.ShowNextScript();
+	}
+
+	private void HideScriptedEvent()
+	{
+		ScriptedEvents.instance.HideCurrentScript();
 	}
 }
