@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\EventManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\RandomAccessCircularArray.cs" />
+    <Compile Include="Assets\Scripts\TieredAnimation.cs" />
     <Compile Include="Assets\Scripts\TitleMenuManager.cs" />
     <Compile Include="Assets\Scripts\WaterLogs.cs" />
     <Compile Include="Assets\Scripts\Waveable.cs" />
