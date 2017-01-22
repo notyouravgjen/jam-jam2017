@@ -61,6 +61,13 @@ public class GameManager : MonoBehaviour {
 			Destroy(this.currentRoundDestructible);
 		}
 
+		// WRECKED
+		ShowNextScript();
+		// Dad outro
+		Invoke("ShowNextScript", 5.0f);
+		// hide scripted events and proceed
+		Invoke("HideScriptedEvent", 10.0f);
+
 		waterLogManager.Reset();
 
 		mainMusic.SetFadeTarget(0.25f);
@@ -111,9 +118,9 @@ public class GameManager : MonoBehaviour {
 		if (this.currentRoundIndex < this.destructiblePrefabs.Length)
 		{
 			levelLabel.text = "Level " + (currentRoundIndex+1);
-			Invoke("ShowLevelLabel", 2.0f);
+			Invoke("ShowLevelLabel", 8.0f);
 
-			Invoke("StartRound", 3.0f);
+			Invoke("StartRound", 10.0f);
 		}
 		else
 		{
