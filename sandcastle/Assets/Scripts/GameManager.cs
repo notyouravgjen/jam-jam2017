@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
 	public GameObject[] destructiblePrefabs;
+	public AudioSource[] countingSounds;
 	public GameObject spawnPoint;
 	public AudioClip themeSong;
 
@@ -38,6 +39,15 @@ public class GameManager : MonoBehaviour {
 		}
 
 		this.currentRoundDestructible = (GameObject)Instantiate(prefab, pos, rot, transform.parent);
+
+		// play associated audio?
+		if (this.countingSounds != null)
+		{
+			if (this.currentRoundIndex < this.countingSounds.Length)
+			{
+				this.countingSounds[currentRoundIndex].Play();
+			}
+		}
 	}
 
 	private void ProgressRound()
