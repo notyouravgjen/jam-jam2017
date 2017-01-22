@@ -17,6 +17,6 @@ public class TitleMenuManager : MonoBehaviour {
 
 	public void OnPlayClicked()
 	{
-		SceneManager.LoadScene("Gameplay");
+		SceneManager.LoadScene("Waves");
 	}
 }
