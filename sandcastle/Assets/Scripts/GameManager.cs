@@ -103,10 +103,10 @@ public class GameManager : MonoBehaviour {
 
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.A))
+		/*if (Input.GetKeyDown(KeyCode.A))
 		{
 			ProgressRound();
-		}
+		}*/
 	}
 
 	public void ProgressRound()
@@ -140,9 +140,9 @@ public class GameManager : MonoBehaviour {
 
 	private void EndGame()
 	{
-		// End of game logic: dad shows up!
+		// End of game logic: dad shows up! - no, nevermind
 		mainMusic.SetFadeTarget(0.25f);
-		fatherObject.SetActive(true);
+		//fatherObject.SetActive(true);
 	}
 
 	private void ShowNextScript()
